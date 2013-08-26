@@ -1,0 +1,11 @@
+start(0).
+final(2).
+transition(0,b,0).
+transition(0,a,1).
+transition(1,a,1).
+transition(1,b,2).
+transition(2,a,2).
+transition(2,b,2).
+delta(P,[],P).
+delta(P,[X|R],Q):-transition(P,X,T),delta(T,R,Q).
+acceptance(String):-delta(0,String,2).
